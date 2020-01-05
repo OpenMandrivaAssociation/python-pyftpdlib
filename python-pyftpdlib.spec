@@ -1,8 +1,8 @@
 %define upstream_name pyftpdlib
 
 Name:		python-%{upstream_name}
-Version:	1.5.4
-Release:	%mkrel 3
+Version:	1.5.5
+Release:	1
 Summary:	Python FTP server library
 Group:		System/Libraries
 License:	MIT
@@ -16,11 +16,11 @@ write asynchronous FTP servers with Python. pyftpdlib is currently the most
 complete RFC-959 FTP server implementation available for Python programming
 language.
 
-%package -n python3-%{upstream_name}
+%package -n python-%{upstream_name}
 Summary:	Python FTP server library
-BuildRequires:	python3
+BuildRequires:	python
 
-%description -n python3-%{upstream_name}
+%description -n python-%{upstream_name}
 Python FTP server library provides a high-level portable interface to easily
 write asynchronous FTP servers with Python. pyftpdlib is currently the most
 complete RFC-959 FTP server implementation available for Python programming
@@ -30,13 +30,13 @@ language.
 %setup -q -n %{upstream_name}-release-%{version}
 
 %build
-%py3_build
+%py_build
 
 %install
-%py3_install
+%py_install
 
-%files -n python3-%{upstream_name}
+%files -n python-%{upstream_name}
 %doc CREDITS HISTORY.rst LICENSE README.rst
-%{python3_sitelib}/%{upstream_name}
-%{python3_sitelib}/%{upstream_name}-%{version}-py%{python3_version}.egg-info
+%{python_sitelib}/%{upstream_name}
+%{python_sitelib}/%{upstream_name}-%{version}-py%{python_version}.egg-info
 %{_bindir}/ftpbench
