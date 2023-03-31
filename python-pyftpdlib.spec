@@ -2,7 +2,7 @@
 
 Name:		python-%{upstream_name}
 Version:	1.5.5
-Release:	1
+Release:	2
 Summary:	Python FTP server library
 Group:		System/Libraries
 License:	MIT
