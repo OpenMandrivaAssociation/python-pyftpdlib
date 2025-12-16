@@ -8,6 +8,7 @@ Group:		System/Libraries
 License:	MIT
 URL:		https://github.com/giampaolo/pyftpdlib
 Source0:	https://github.com/giampaolo/pyftpdlib/archive/pyftpdlib-release-%{version}.tar.gz
+BuildRequires:  python%{pyver}dist(setuptools)
 BuildArch:	noarch
 
 %description
