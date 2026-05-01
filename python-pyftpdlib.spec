@@ -1,5 +1,6 @@
 %define module pyftpdlib
-%bcond tests 1
+# disable tests on ABF
+%bcond tests 0
 
 Name:		python-pyftpdlib
 Version:	2.2.0
