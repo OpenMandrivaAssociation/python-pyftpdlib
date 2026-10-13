@@ -4,7 +4,7 @@
 
 Name:		python-pyftpdlib
 Version:	2.2.0
-Release:	1
+Release:	2
 Summary:	Python FTP server library
 Group:		System/Libraries
 License:	MIT
@@ -13,13 +13,14 @@ Source0:	%{URL}/archive/release-%{version}/%{name}-%{version}.tar.gz
 
 BuildSystem:	python
 BuildArch:	noarch
+BuildRequires:	pkgconfig(python3)
 BuildRequires:	help2man
 BuildRequires:	python%{pyver}dist(pip)
 BuildRequires:	python%{pyver}dist(pyopenssl)
 BuildRequires:	python%{pyver}dist(setuptools)
 BuildRequires:	python%{pyver}dist(wheel)
-BuildRequires:	tomcli
 %if %{with tests}
+BuildRequires:	tomcli
 BuildRequires:	python-test
 BuildRequires:	python%{pyver}dist(psutil)
 BuildRequires:	python%{pyver}dist(pyasyncore)
@@ -39,12 +40,14 @@ complete RFC-959 FTP server implementation available for Python programming
 language.
 
 %prep -a
+%if %{with tests}
 # We dont package pytest-instafail
 tomcli set pyproject.toml lists delitem 'project.optional-dependencies.test' 'pytest-instafail\b.*'
 # also remove it from pytest options, and reduce verbosity
 sed -r -i 's/(--instafail|-p instafail|--verbose)//' pyproject.toml
 # fix interpreter in tests
 sed -i '1i #!%{__python}' tests/*.py
+%endif
 
 %install -a
 # make mandir
